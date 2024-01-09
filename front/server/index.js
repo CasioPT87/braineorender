@@ -15,12 +15,17 @@ app.get('/spa-csr', (req, res) => {
     res.sendFile(path.join(__dirname, './client/bundled/dist/index.html'));
 });
 
-app.get('/ssr', async (req, res) => {
+app.get('/spa-ssr', async (req, res) => {
     // SSR
     const { data } = await axios.get('http://localhost:3000/data')
     const myDiv = `<div>Cuando ${data.name} ${data.lastname} tenia ${data.age} era el mehonnn</div>`
     const stringHtml = `<html><head><title>Hello</title></head><body><h1>Hello, world!</h1>${myDiv}</body></html>`
     res.send(stringHtml);
+});
+
+app.get('/', (req, res) => {
+    // SPA
+    res.sendFile(path.join(__dirname, './client/bundled/dist/index.html'));
 });
 
 // Start the server

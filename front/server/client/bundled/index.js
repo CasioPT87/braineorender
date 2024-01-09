@@ -7,9 +7,12 @@ const myDiv = window.document.getElementById('hey')
 myDiv.style.background = 'green'
 
 fetch('http://localhost:3000/data').then(async _data => {
-    console.log(_data)
     const data = await _data.json()
     setTimeout(() => {
+        const loadingTitle = window.document.getElementById('loading')
+        const content = window.document.getElementById('content')
+        loadingTitle.style.display = 'none'
+        content.style.display = 'block'
         myDiv.innerHTML = `${data.name} ${data.lastname} was the best when he was ${data.age}`
     }, 5000)
     
