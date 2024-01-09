@@ -13,11 +13,11 @@ app.use((req, res, next) => {
   });
 
 // Define a route
-app.get('/sergi', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello, this is a basic Express application!');
 });
 
-app.get('/roci', (req, res) => {
+app.get('/ssr-monolith', (req, res) => {
     // Send the HTML file as a response
     res.sendFile(path.join(__dirname, 'index.html'));
 });
