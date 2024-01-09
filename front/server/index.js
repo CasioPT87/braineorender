@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, './client/simple/public')));
 // para hacer "dist" el directorio publico
 app.use(express.static(path.join(__dirname, './client/bundled/dist')));
 
-app.get('/spa', (req, res) => {
+app.get('/spa-csr', (req, res) => {
     // SPA
     res.sendFile(path.join(__dirname, './client/bundled/dist/index.html'));
 });
@@ -21,11 +21,6 @@ app.get('/ssr', async (req, res) => {
     const myDiv = `<div>Cuando ${data.name} ${data.lastname} tenia ${data.age} era el mehonnn</div>`
     const stringHtml = `<html><head><title>Hello</title></head><body><h1>Hello, world!</h1>${myDiv}</body></html>`
     res.send(stringHtml);
-});
-
-app.get('/', (req, res) => {
-    // Old fashion
-    res.sendFile(path.join(__dirname, './client/simple/index.html'));
 });
 
 // Start the server
